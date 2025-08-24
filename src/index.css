@@ -2,5 +2,20 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-  background-color: #F6F6F7;
+  background-color: #efefef;
+	font-family: 'PoppinsMedium'
 }
+
+@font-face {
+  font-family: "PoppinsMedium"; 
+  src: url('./assets//fonts/Poppins-Medium.ttf') format("truetype"); 
+  font-style: normal; 
+  font-weight: normal; 
+} 
+
+@font-face {
+  font-family: "PoppinsLight"; 
+  src: url('./assets//fonts/Poppins-Light.otf') format("truetype"); 
+  font-style: normal; 
+  font-weight: normal; 
+} 
