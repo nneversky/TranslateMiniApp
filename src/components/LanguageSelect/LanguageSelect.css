@@ -1,10 +1,10 @@
 .languageSelect {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  background-color: #FFFFFF;
+  /* background-color: #FFFFFF;
   width: 80%;
-  height: 80px;
+  height: 80px; */
   position: fixed;
   padding: 0 20px;
   bottom: 5%;
@@ -15,9 +15,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  transform: scale(2);
-  width: 25px;
-  height: 25px;
+  /* transform: scale(150vh); */
+  width: 10vh;
+  height: 10vh;
   border-radius: 50%;
   background-color: #2a2abc;
   cursor: pointer;
@@ -32,7 +32,7 @@
 }
 
 .languageSelect__reverse:active {
-  transform: scale(2) translateY(0.5px)
+  transform: translateY(1px)
 }
 
 .languageSelect__text {

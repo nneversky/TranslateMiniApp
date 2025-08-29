@@ -1,20 +1,40 @@
 import { Textarea, Image } from "@mantine/core";
-import { GoCopy } from "react-icons/go";
-import en from "../../assets/images/en.png";
+import { capitalize } from "lodash";
+import { HiDuplicate } from "react-icons/hi";
+import { dictLangs, pathLangs } from "../../service";
+import { useSelector } from "react-redux";
+import { GoChevronDown } from "react-icons/go";
+import type { RootState } from "../../store";
 import "./InputView.css";
 
+type LanguageKey = keyof typeof pathLangs;
+
 const InputView = () => {
+  const translateText = useSelector(
+    (state: RootState) => state.app.translateText
+  );
+  const tl = useSelector((state: RootState) => state.app.tl as LanguageKey);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(translateText);
+    } catch {
+      return null;
+    }
+  };
+
   return (
-    <section className="input">
+    <section className="input input-view">
       <div className="input__header header">
-        <Image style={{ width: "7%", height: "7%" }} src={en} />
-        <span className="header__text">English</span>
+        <Image style={{ width: "7%", height: "7%" }} src={pathLangs[tl]} />
+        <span className="header__text">{capitalize(dictLangs[tl])}</span>
+        <GoChevronDown size={"8%"} />
       </div>
       <Textarea
         className="input__area"
-        value='Your text'
-        disabled
+        value={translateText}
         maxRows={4}
+        autosize
         styles={{
           input: {
             backgroundColor: "#FFFFFF",
@@ -22,13 +42,13 @@ const InputView = () => {
             paddingTop: "10px",
             paddingBottom: "10px",
             fontSize: "20px",
-            minBlockSize: "150px",
           },
         }}
         size="30"
       />
       <div className="input__icon copy">
-        <GoCopy
+        <HiDuplicate
+          onClick={handleCopy}
           style={{
             color: "#2a2abc",
           }}

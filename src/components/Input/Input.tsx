@@ -1,19 +1,55 @@
 import { Textarea, Image } from "@mantine/core";
-import { GoPaste } from "react-icons/go";
-import ru from "../../assets/images/ru.png";
+import { HiOutlineX } from "react-icons/hi";
+import React, { useCallback, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { setText, setBufferText } from "../../store/slices/appSlice";
+import { GoChevronDown } from "react-icons/go";
+import { dictLangs, pathLangs } from "../../service";
+import type { RootState } from "../../store";
+import _ from "lodash";
 import "./Input.css";
 
+type LanguageKey = keyof typeof pathLangs;
+
 const Input = () => {
+  const dispatch = useDispatch();
+  const sl = useSelector((state: RootState) => state.app.sl as LanguageKey);
+  const bufferText = useSelector((state: RootState) => state.app.bufferText);
+
+  const debouncedLog = useCallback(
+    _.debounce((value: string) => {
+      dispatch(setText(value));
+    }, 300),
+    []
+  );
+
+  const handleClick = () => {
+    dispatch(setBufferText(""));
+    dispatch(setText(""));
+  };
+
+  useEffect(() => {
+    debouncedLog(bufferText);
+  }, [bufferText]);
+
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    dispatch(setBufferText(e.target.value));
+  };
+
   return (
     <section className="input">
       <div className="input__header header">
-        <Image style={{ width: "7%", height: "7%" }} src={ru} />
-        <span className="header__text">Russian</span>
+        <Image style={{ width: "7%", height: "7%" }} src={pathLangs[sl]} />
+        <span className="header__text">{_.capitalize(dictLangs[sl])}</span>
+        <GoChevronDown size={"8%"} />
       </div>
       <Textarea
         className="input__area"
-        placeholder="Enter text"
+        placeholder="Enter text..."
+        onChange={(e) => handleChange(e)}
+        value={bufferText}
         maxRows={4}
+        autosize
         styles={{
           input: {
             backgroundColor: "#FFFFFF",
@@ -21,13 +57,15 @@ const Input = () => {
             paddingTop: "10px",
             paddingBottom: "10px",
             fontSize: "20px",
-            minBlockSize: "150px",
           },
         }}
         size="30"
       />
-      <div className="input__icon paste">
-        <GoPaste
+      <div
+        className={`input__icon icon__del${bufferText.trim().length > 0 ? "--active" : ""}`}
+      >
+        <HiOutlineX
+          onClick={handleClick}
           style={{
             color: "#2a2abc",
           }}
