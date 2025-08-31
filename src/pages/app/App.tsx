@@ -19,17 +19,19 @@ const App = () => {
   }, [sl, tl, text]);
 
   return (
-    <section className="app">
-      <div className="app__header">
-        <span className="app__header-text">Get started & Translate)</span>
-        <div className="app__header--bg"></div>
-      </div>
-      <div className="app__input">
-        <Input />
-        <InputView />
-      </div>
-      <LanguageSelect />
-    </section>
+    <>
+      <section className="app">
+        <div className="app__header">
+          <span className="app__header-text">Get started & Translate)</span>
+        </div>
+        <div className="app__input">
+          <Input />
+          <InputView />
+        </div>
+        <LanguageSelect />
+      </section>
+      <span className="comingSoon">Development for tablets and pc will be coming soon)</span>
+    </>
   );
 };
 

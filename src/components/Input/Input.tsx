@@ -2,7 +2,12 @@ import { Textarea, Image } from "@mantine/core";
 import { HiOutlineX } from "react-icons/hi";
 import React, { useCallback, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setText, setBufferText } from "../../store/slices/appSlice";
+import {
+  setText,
+  setBufferText,
+  getShowModal,
+  getDataLang,
+} from "../../store/slices/appSlice";
 import { GoChevronDown } from "react-icons/go";
 import { dictLangs, pathLangs } from "../../service";
 import type { RootState } from "../../store";
@@ -15,6 +20,11 @@ const Input = () => {
   const dispatch = useDispatch();
   const sl = useSelector((state: RootState) => state.app.sl as LanguageKey);
   const bufferText = useSelector((state: RootState) => state.app.bufferText);
+
+  const handleClickModal = () => {
+    dispatch(getDataLang({ activeLang: sl, option: "sl" }));
+    dispatch(getShowModal(true));
+  };
 
   const debouncedLog = useCallback(
     _.debounce((value: string) => {
@@ -38,7 +48,7 @@ const Input = () => {
 
   return (
     <section className="input">
-      <div className="input__header header">
+      <div className="input__header header" onClick={handleClickModal}>
         <Image style={{ width: "7%", height: "7%" }} src={pathLangs[sl]} />
         <span className="header__text">{_.capitalize(dictLangs[sl])}</span>
         <GoChevronDown size={"8%"} />

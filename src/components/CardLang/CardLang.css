@@ -1,0 +1,16 @@
+.card__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  color: #7C7C7A;
+  gap: 1vh;
+}
+
+.content--active {
+  filter: grayscale(100%);
+}
+
+.cardLang:active {
+  transform: translateY(2px);
+}

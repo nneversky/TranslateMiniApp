@@ -1,0 +1,40 @@
+.modalSwitch {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 150;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background-color: #efefef;
+}
+
+.modalSwitch__content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  gap: 10%;
+}
+
+.modalSwitch__text {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 3%;
+  font-size: large;
+  justify-content: flex-start;
+  margin-left: 7%;
+  color: #292C6F;
+  transform: translateY(-3vh);
+}
+
+.modal-content {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+}

@@ -1,10 +1,15 @@
 .input__icon {
+  width: 17px;
+  height: 17px;
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   transform: scale(1.5) translate(53vw, 8px);
 }
 
 .input__icon:active {
-  transform: scale(1.5) translate(53vw, 8.5px);
+  transform: scale(1.5) translate(53vw, 9px);
 }
 
 .icon__del {
@@ -13,10 +18,4 @@
 
 .icon__del--active {
   display: block;
-}
-
-@media (max-height: 500px) {
-  .input-view {
-    display: none;
-  }
 }

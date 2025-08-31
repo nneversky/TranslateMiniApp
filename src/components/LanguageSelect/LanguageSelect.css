@@ -2,9 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background-color: #FFFFFF;
-  width: 80%;
-  height: 80px; */
   position: fixed;
   padding: 0 20px;
   bottom: 5%;
@@ -15,7 +12,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* transform: scale(150vh); */
   width: 10vh;
   height: 10vh;
   border-radius: 50%;
