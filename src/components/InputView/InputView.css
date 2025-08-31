@@ -6,6 +6,15 @@
   justify-content: center;
   align-items: center;
   transform: scale(1.5) translate(53vw, 8px);
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 .input__icon:active {

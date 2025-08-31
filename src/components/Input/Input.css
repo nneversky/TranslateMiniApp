@@ -17,6 +17,15 @@
   gap: 10px;
   margin-top: 10px;
   margin-left: 20px;
+  cursor: pointer;
+
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
 }
 
 .input__area {
