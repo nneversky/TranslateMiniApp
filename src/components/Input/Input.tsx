@@ -9,7 +9,7 @@ import {
   getDataLang,
 } from "../../store/slices/appSlice";
 import { GoChevronDown } from "react-icons/go";
-import { dictLangs, pathLangs } from "../../service";
+import { dictLangs, pathLangs, dictLangsRu } from "../../service";
 import type { RootState } from "../../store";
 import _ from "lodash";
 import "./Input.css";
@@ -20,6 +20,7 @@ const Input = () => {
   const dispatch = useDispatch();
   const sl = useSelector((state: RootState) => state.app.sl as LanguageKey);
   const bufferText = useSelector((state: RootState) => state.app.bufferText);
+  const mainLang = useSelector((state: RootState) => state.app.mainLang);
 
   const handleClickModal = () => {
     dispatch(getDataLang({ activeLang: sl, option: "sl" }));
@@ -50,12 +51,14 @@ const Input = () => {
     <section className="input">
       <div className="input__header header" onClick={handleClickModal}>
         <Image style={{ width: "7%", height: "7%" }} src={pathLangs[sl]} />
-        <span className="header__text">{_.capitalize(dictLangs[sl])}</span>
+        <span className="header__text">
+          {_.capitalize(mainLang === "en" ? dictLangs[sl] : dictLangsRu[sl])}
+        </span>
         <GoChevronDown size={"8%"} />
       </div>
       <Textarea
         className="input__area"
-        placeholder="Enter text..."
+        placeholder={mainLang === "en" ? "Enter text..." : "Введите текст..."}
         onChange={(e) => handleChange(e)}
         value={bufferText}
         maxRows={4}

@@ -1,7 +1,7 @@
 import { Textarea, Image } from "@mantine/core";
 import { capitalize } from "lodash";
 import { HiDuplicate } from "react-icons/hi";
-import { dictLangs, pathLangs } from "../../service";
+import { dictLangs, pathLangs, dictLangsRu } from "../../service";
 import { getShowModal, getDataLang } from "../../store/slices/appSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { GoChevronDown } from "react-icons/go";
@@ -16,6 +16,7 @@ const InputView = () => {
     (state: RootState) => state.app.translateText
   );
   const tl = useSelector((state: RootState) => state.app.tl as LanguageKey);
+  const mainLang = useSelector((state: RootState) => state.app.mainLang);
 
   const handleClickModal = () => {
     dispatch(getDataLang({ activeLang: tl, option: "tl" }));
@@ -34,7 +35,9 @@ const InputView = () => {
     <section className="input input-view">
       <div className="input__header header" onClick={handleClickModal}>
         <Image style={{ width: "7%", height: "7%" }} src={pathLangs[tl]} />
-        <span className="header__text">{capitalize(dictLangs[tl])}</span>
+        <span className="header__text">
+          {capitalize(mainLang === "en" ? dictLangs[tl] : dictLangsRu[tl])}
+        </span>
         <GoChevronDown size={"8%"} />
       </div>
       <Textarea

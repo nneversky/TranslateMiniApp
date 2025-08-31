@@ -7,6 +7,7 @@ interface TranslateResponse {
 }
 
 interface AppState {
+  mainLang: string;
   sl: string;
   tl: string;
   text: string;
@@ -37,6 +38,7 @@ export const getTranslate = createAsyncThunk(
 const appSlice = createSlice({
   name: "app",
   initialState: {
+    mainLang: "en",
     sl: "ru",
     tl: "en",
     text: "",

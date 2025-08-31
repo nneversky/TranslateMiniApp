@@ -19,6 +19,7 @@ const ModalSwitchLanguage = () => {
   const dataLang = useSelector(
     (state: RootState) => state.app.dataLang as DataLang
   );
+  const mainLang = useSelector((state: RootState) => state.app.mainLang);
 
   const groupedElements = useMemo(() => {
     const keys = Object.keys(dictLangs);
@@ -55,7 +56,7 @@ const ModalSwitchLanguage = () => {
           onClick={() => dispatch(getShowModal(false))}
         >
           <GoArrowLeft style={{ transform: "scale(1.6)" }} />
-          <span>Choose mother language</span>
+          {mainLang === "en" ? <span>Come back</span> : <span style={{fontWeight : 600}}>Вернуться</span>}
         </div>
         {groupedElements}
       </div>

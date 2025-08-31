@@ -1,4 +1,6 @@
 .card__content {
+  width: 21vw;
+  height: 14vh;
   display: flex;
   justify-content: center;
   flex-direction: column;

@@ -22,7 +22,7 @@ const App = () => {
     <>
       <section className="app">
         <div className="app__header">
-          <span className="app__header-text">Get started & Translate)</span>
+          <span className="app__header-text">Shark translator)</span>
         </div>
         <div className="app__input">
           <Input />
@@ -30,7 +30,7 @@ const App = () => {
         </div>
         <LanguageSelect />
       </section>
-      <span className="comingSoon">Development for tablets and pc will be coming soon)</span>
+      <span className="comingSoon">Development for tablets and pc will be coming soon</span>
     </>
   );
 };

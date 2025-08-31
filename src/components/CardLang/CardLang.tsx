@@ -1,7 +1,8 @@
 import { Card, Text, Image } from "@mantine/core";
-import { pathLangs, dictLangs } from "../../service";
+import { pathLangs, dictLangs, dictLangsRu } from "../../service";
 import { switchOption, getShowModal } from "../../store/slices/appSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import type { RootState } from "../../store";
 import { capitalize } from "lodash";
 import "./CardLang.css";
 
@@ -18,6 +19,7 @@ const isValidLang = (lang: string): lang is ValidLang => {
 };
 
 const CardLang = ({ lang, active, option }: CardProps) => {
+  const mainLang = useSelector((state: RootState) => state.app.mainLang);
   const dispatch = useDispatch();
 
   const handleClick = () => {
@@ -54,7 +56,7 @@ const CardLang = ({ lang, active, option }: CardProps) => {
             fontFamily: "PoppinsMedium, Open Sans, sans-serif",
           }}
         >
-          {capitalize(dictLangs[lang])}
+          {capitalize(mainLang === 'en' ? dictLangs[lang] : dictLangsRu[lang])}
         </Text>
       </div>
     </Card>

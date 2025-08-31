@@ -20,6 +20,18 @@ export const dictLangs = {
   es: "spanish",
 };
 
+export const dictLangsRu = {
+  en: "английский",
+  ru: "русский",
+  ja: "японский",
+  de: "немецкий",
+  it: "итальянский",
+  "zh-TW": "китайский",
+  ko: "корейский",
+  hi: "хинди",
+  es: "испанский",
+};
+
 export const pathLangs = {
   en: en,
   ru: ru,
