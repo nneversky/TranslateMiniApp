@@ -1,5 +1,6 @@
 import Input from "../../components/Input";
 import LanguageSelect from "../../components/LanguageSelect";
+import telegramAnalytics from "@telegram-apps/analytics";
 import { getTranslate } from "../../store/slices/appSlice";
 import InputView from "../../components/InputView";
 import { useSelector, useDispatch } from "react-redux";
@@ -13,6 +14,13 @@ const App = () => {
   const sl = useSelector((state: RootState) => state.app.sl);
   const tl = useSelector((state: RootState) => state.app.tl);
   const text = useSelector((state: RootState) => state.app.text);
+
+  useEffect(() => {
+    telegramAnalytics.init({
+      token: import.meta.env.TOKEN,
+      appName: import.meta.env.APPNAME,
+    });
+  }, []);
 
   useEffect(() => {
     dispatch(getTranslate({ sl, tl, text }));
@@ -30,7 +38,9 @@ const App = () => {
         </div>
         <LanguageSelect />
       </section>
-      <span className="comingSoon">Development for tablets and pc will be coming soon</span>
+      <span className="comingSoon">
+        Development for tablets and pc will be coming soon
+      </span>
     </>
   );
 };
